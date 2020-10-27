@@ -1,21 +1,45 @@
-// Задача 2 - 3
-// Поиск самого длинного слово в строке с пробелами
-// Напиши функцию findLongestWord(string = ""), которая принимает параметром произвольную строку(в строке будут только слова и пробелы) и возвращает самое длинное слово в этой строке.
+// Задача 3-3
+// Поиск наибольшего значения среди свойств объекта
+// Напиши функцию findBestEmployee(employees), которая принимает объект сотрудников и
+// возвращает имя самого продуктивного(который выполнил больше всех задач).
+// Сотрудники и кол - во выполненных задач содержатся как свойства объекта в формате "имя": "кол-во задач".
 
-function formatString(string, maxLength = 40) {
+const findBestEmployee = function (employees) {
+  "use strict";
   // Write code under this line
-  let message = " ";
-  if (string.length <= maxLength) {
-    return message;
+  const max = Math.max(...Object.values(employees));
+  for (const key in employees) {
+    if (employees[key] === max) {
+      return key;
+    }
   }
-  return message[0];
-}
+  return "";
+};
 
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog"));
-// 'jumped'
+// Объекты и ожидаемый результат
+const developers = {
+  ann: 29,
+  david: 35,
+  helen: 1,
+  lorence: 99,
+};
 
-console.log(findLongestWord("Google do a roll"));
-// 'Google'
+console.log(findBestEmployee(developers));
+// 'lorence'
 
-console.log(findLongestWord("May the force be with you"));
-// 'force'
+const supports = {
+  poly: 12,
+  mango: 17,
+  ajax: 4,
+};
+console.log(findBestEmployee(supports));
+// 'mango'
+
+const sellers = {
+  lux: 147,
+  david: 21,
+  kiwi: 19,
+  chelsy: 38,
+};
+console.log(findBestEmployee(sellers));
+// 'lux'
